@@ -1,3 +1,4 @@
+
 // This will fetch data from the json server.
 fetch('http://localhost:3000/characters')
 .then(response => response.json())
@@ -15,15 +16,21 @@ function displayAnimalNames(animals) {
         displayAnimalDetails(selectedAnimal);
     });
 
-    //Displaying the selected animal's descriptions
+    //Displaying the selected animal's descriptions and votes
     function displayAnimalDetails(animal) {
         const animalImage = document.getElementById('animalImage');
         const voteCount = document.getElementById('voteNo');
         const voteButton = document.getElementById('votingBtn');
 
         animalImage.innerHTML = `<img src="${animal.image}" alt="${animal.name}">`;
-       
-        
+        voteCount.textContent = animal.votes;
+
+
+        voteButton.addEventListener('click', () => {
+            animal.votes++;
+            voteCount.textContent = animal.votes;
+            voteButton.textContent = 'add vote';
+        });
     }
-    
 }
+
