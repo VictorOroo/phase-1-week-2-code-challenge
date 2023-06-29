@@ -21,7 +21,8 @@ function displayAnimalNames(animals) {
         const animalImage = document.getElementById('animalImage');
         const voteCount = document.getElementById('voteNo');
         const voteButton = document.getElementById('votingBtn');
-
+        const resetButton = document.getElementById('resetBtn');
+   
         animalImage.innerHTML = `<img src="${animal.image}" alt="${animal.name}">`;
         voteCount.textContent = animal.votes;
 
@@ -30,6 +31,10 @@ function displayAnimalNames(animals) {
             animal.votes++;
             voteCount.textContent = animal.votes;
             voteButton.textContent = 'add vote';
+        });
+        resetButton.addEventListener('click', () => {
+            animal.votes = 0;
+            voteCount.textContent = animal.votes;
         });
     }
 }
